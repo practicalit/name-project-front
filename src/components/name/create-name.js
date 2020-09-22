@@ -99,7 +99,7 @@ const CreateName = (props) => {
               onChange={(e) => setGender(e.target.value)}
               className="form-control"
             >
-              <option value="">Select Applicable Gender</option>
+              <option value="">Select applicable Gender</option>
               {allGenders.map((gender) => {
                 return (
                   <option key={gender.gender_id} value={gender.gender_id}>
