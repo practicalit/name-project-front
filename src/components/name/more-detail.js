@@ -107,7 +107,7 @@ const AddMoreDeatil = (props) => {
                 <div className="features-icons-icon d-flex">
                   <i className="icon-speech m-auto text-primary"></i>
                 </div>
-                <h3>Great name: {name}, what is the meaning?</h3>
+                <h3>Great name: {name}, what does it mean?</h3>
                 <textarea
                   onChange={(e) => setDetail(e.target.value)}
                   className="form-control"
