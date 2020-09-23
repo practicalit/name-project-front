@@ -62,7 +62,7 @@ const CreateName = (props) => {
                         <label htmlFor="origin_language">Origin Language</label>
                         <select value={origin_language}
                             onChange={e => setOriginLanguage(e.target.value)} className="form-control" id="origin_language">
-                            <option> Origin Language</option>
+                            <option> Select Origin Language</option>
                             {
                                 allOrigins.map((origin) => {
                                     return (<option key={origin.origin_id} value={origin.origin_id}>{origin.title}</option>)

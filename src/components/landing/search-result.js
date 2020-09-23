@@ -26,8 +26,8 @@ const SearchResult = ({ searchResult }) => {
                         <div className="col-lg-4">
                             <div className="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
                                 <div className="features-icons-icon d-flex">
-                                    <i className={`${searchResult.gender === 'Female' || searchResult.gender === 'Both' ? "icon-user-female m-auto text-primary" : ""}`}></i>
-                                    <i className={`${searchResult.gender === 'Male' || searchResult.gender === 'Both' ? "icon-user m-auto text-primary" : ""}`}></i>
+                                    <i className={`${searchResult.gender == 'Female' || searchResult.gender == 'Both' ? "icon-user-female m-auto text-primary" : ""}`}></i>
+                                    <i className={`${searchResult.gender == 'Male' || searchResult.gender == 'Both' ? "icon-user m-auto text-primary" : ""}`}></i>
                                 </div>
                                 <h3>Applicable for Gender</h3>
                                 <p className="lead mb-0">This name is applicable for {searchResult.gender}</p>

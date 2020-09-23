@@ -28,7 +28,7 @@ const LandingParent = () => {
       {searchResult != null && searchResult.length > 0 && (
         <SearchResult searchResult={searchResult} />
       )}
-      {searchResult != null && searchResult.length === 0 && (
+      {searchResult != null && searchResult.length == 0 && (
         <CreateName
           propName={name}
           title={`You are the first to add the great name ${name}. Congrats`}

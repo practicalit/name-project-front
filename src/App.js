@@ -4,7 +4,6 @@
  * @author Practical IT
  */
 import React, { Fragment, useState } from 'react';
-import { FaFacebookSquare, FaTwitterSquare, FaInstagramSquare } from "react-icons/fa";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './App.css';
@@ -30,8 +29,8 @@ function App() {
 
         <nav className="navbar navbar-light bg-light static-top">
           <div className="container">
-            <a className="navbar-brand" href="/">The NAME - Heritage - Project</a>
-            <a className="btn btn-primary" href="/">Volunteer</a>
+            <a className="navbar-brand" href="#">The NAME - Heritage - Project</a>
+            <a className="btn btn-primary" href="#">Volunteer</a>
           </div>
         </nav>
 
@@ -53,7 +52,7 @@ function App() {
                   </li>
                   <li className="list-inline-item">&sdot;</li>
                   <li className="list-inline-item">
-                    <a href="/">Contact</a>
+                    <a href="#">Contact</a>
                   </li>
                   <li className="list-inline-item">&sdot;</li>
                   <li className="list-inline-item">
@@ -69,18 +68,18 @@ function App() {
               <div className="col-lg-6 h-100 text-center text-lg-right my-auto">
                 <ul className="list-inline mb-0">
                   <li className="list-inline-item mr-3">
-                    <a href="/">
-                      <i className="fab fa-facebook fa-2x fa-fw"></i><FaFacebookSquare />
+                    <a href="#">
+                      <i className="fab fa-facebook fa-2x fa-fw"></i>
                     </a>
                   </li>
                   <li className="list-inline-item mr-3">
-                    <a href="/">
-                      <i className="fab fa-twitter-square fa-2x fa-fw"></i><FaTwitterSquare />
+                    <a href="#">
+                      <i className="fab fa-twitter-square fa-2x fa-fw"></i>
                     </a>
                   </li>
                   <li className="list-inline-item">
-                    <a href="/">
-                      <i className="fab fa-instagram fa-2x fa-fw" textSize="50px"></i><FaInstagramSquare />
+                    <a href="#">
+                      <i className="fab fa-instagram fa-2x fa-fw" textSize="50px"></i>
                     </a>
                   </li>
                 </ul>
