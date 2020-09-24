@@ -62,7 +62,7 @@ function App() {
                   </li>
                 </ul>
                 <p className="text-muted small mb-4 mb-lg-0">
-                  &copy; ThePracticalIT. All Rights Reserved.
+                  &copy; ThePracticalIT. All Rights Reserved. © 2020.
                 </p>
               </div>
               <div className="col-lg-6 h-100 text-center text-lg-right my-auto">
