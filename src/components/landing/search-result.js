@@ -69,9 +69,9 @@ const SearchResult = ({ searchResult }) => {
                 <div className="features-icons-icon d-flex">
                   <i className="icon-check m-auto text-primary"></i>
                 </div>
-                <h3>The origin of name is</h3>
+                <h3>The Origin Of The Name Is</h3>
                 <p className="lead mb-0">
-                  The origin of your name is {searchResult.origin.toUpperCase()}
+                  The origin of your name is {searchResult.origin}
                 </p>
               </div>
             </div>
