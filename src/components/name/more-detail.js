@@ -144,7 +144,7 @@ const AddMoreDeatil = (props) => {
                 <div className="features-icons-icon d-flex">
                   <i className="icon-graph m-auto text-primary"></i>
                 </div>
-                <h3>Which age range describes you most?</h3>
+                <h3>What age range describes you most?</h3>
                 <select
                   className="form-control"
                   onChange={(e) => setSelectedRange(e.target.value)}

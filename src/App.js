@@ -28,9 +28,9 @@ function App() {
       <Fragment>
         <nav className="navbar navbar-light bg-light static-top">
           <div className="container">
-            <a className="navbar-brand" href="#">
+            <Link className="navbar-brand" to="/">
               The Name (Heritage) Project.
-            </a>
+            </Link>
             <a className="btn btn-primary" href="#">
               Become Volunteer
             </a>
