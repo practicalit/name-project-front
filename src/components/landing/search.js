@@ -27,7 +27,7 @@ const Search = (props) => {
           <h1 className="mb-5">Search Your Name</h1>
         </div>
         <div className="col-md-10 col-lg-8 col-xl-7 mx-auto">
-          <form>
+          <form onSubmit={(e) => handleSearch(e)}>
             <div className="form-row">
               <div className="col-12 col-md-9 mb-2 mb-md-0">
                 <input
@@ -44,9 +44,9 @@ const Search = (props) => {
               </div>
               <div className="col-12 col-md-3">
                 <button
-                  type="button"
+                  type="submit"
                   className="btn btn-block btn-lg btn-primary"
-                  onClick={(e) => handleSearch(e)}
+                  // onClick={(e) => handleSearch(e)}
                 >
                   Search
                 </button>
