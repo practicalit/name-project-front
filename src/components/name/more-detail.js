@@ -102,7 +102,7 @@ const AddMoreDeatil = (props) => {
       <section className="features-icons bg-light text-center">
         <div className="container">
           <div className="row">
-            <div className="col-lg-4">
+            <div className="col-lg-3">
               <div className="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
                 <div className="features-icons-icon d-flex">
                   <i className="icon-speech m-auto text-primary"></i>
@@ -121,7 +121,7 @@ const AddMoreDeatil = (props) => {
                 </button>
               </div>
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-3">
               <div className="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
                 <div className="features-icons-icon d-flex">
                   <i className="icon-tag m-auto text-primary"></i>
@@ -139,7 +139,7 @@ const AddMoreDeatil = (props) => {
                 </button>
               </div>
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-3">
               <div className="features-icons-item mx-auto mb-0 mb-lg-3">
                 <div className="features-icons-icon d-flex">
                   <i className="icon-graph m-auto text-primary"></i>
@@ -161,6 +161,26 @@ const AddMoreDeatil = (props) => {
                 <di>
                   <button
                     onClick={updateAgeRange}
+                    className="btn btn-sm btn-primary mt-2"
+                  >
+                    Update
+                  </button>
+                </di>
+              </div>
+            </div>
+            <div className="col-lg-3">
+              <div className="features-icons-item mx-auto mb-0 mb-lg-3">
+                <div className="features-icons-icon d-flex">
+                  <i className="icon-list m-auto text-primary"></i>
+                </div>
+                <h3>What is the name that you would like to enter?</h3>
+                <input
+                  onChange={(e) => setName(e.target.value)}
+                  className="form-control"
+                />
+                <di>
+                  <button
+                    onClick={updateName}
                     className="btn btn-sm btn-primary mt-2"
                   >
                     Update
