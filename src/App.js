@@ -4,7 +4,9 @@
  * @author Practical IT
  */
 import React, { Fragment, useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
+import addVolunteer from "./components/landing/addVolunteer";
 
 import "./App.css";
 
@@ -26,14 +28,17 @@ function App() {
   return (
     <Router>
       <Fragment>
+        <Route path="/addVolunteer" component={addVolunteer} />
         <nav className="navbar navbar-light bg-light static-top">
           <div className="container">
             <Link className="navbar-brand" to="/">
               The Name (Heritage) Project.
             </Link>
-            <a className="btn btn-primary" href="#">
-              Become Volunteer
-            </a>
+            <Link to="/addVolunteer">
+              <a className="btn btn-primary" href="#">
+                Become Volunteer
+              </a>
+            </Link>
           </div>
         </nav>
 
