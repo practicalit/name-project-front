@@ -46,7 +46,6 @@ const Search = (props) => {
                 <button
                   type="submit"
                   className="btn btn-block btn-lg btn-primary"
-                  // onClick={(e) => handleSearch(e)}
                 >
                   Search
                 </button>
