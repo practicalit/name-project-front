@@ -3,7 +3,7 @@
  */
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-
+import Addmoredetail from "./Addmoredetail";
 const SearchResult = ({ searchResult }) => {
   searchResult =
     searchResult != null && Array.isArray(searchResult)
@@ -74,6 +74,8 @@ const SearchResult = ({ searchResult }) => {
                   The origin of your name is {searchResult.origin}
                 </p>
               </div>
+
+              <Addmoredetail />
             </div>
           </div>
         </div>
