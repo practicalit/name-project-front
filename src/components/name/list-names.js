@@ -34,13 +34,13 @@ const ListNames = () => {
                 <tbody>
                     {names.map((item, index) => {
                         return (
-                        <tr key={item.name_id}>
-                            <th scope="row">{++index}</th>
-                            <td>{item.name}</td>
-                            <td>{item.origin_language}</td>
-                            <td>{item.gender}</td>
-                            <td><EditName currentName={item}/></td>
-                        </tr>)
+                            <tr key={item.name_id}>
+                                <th scope="row">{++index}</th>
+                                <td>{item.name}</td>
+                                <td>{item.origin_language}</td>
+                                <td>{item.gender}</td>
+                                <td><EditName currentName={item} /></td>
+                            </tr>)
                     })}
                 </tbody>
             </table>

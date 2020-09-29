@@ -6,7 +6,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
 
-const AddMoreDeatil = (props) => {
+const AddMoreDetail = (props) => {
   const [detail, setDetail] = useState("");
   const [ageRange, setAgeRange] = useState([]);
   const [selectedRange, setSelectedRange] = useState();
@@ -175,4 +175,6 @@ const AddMoreDeatil = (props) => {
   );
 };
 
-export default AddMoreDeatil;
+export default AddMoreDetail;
+
+
