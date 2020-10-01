@@ -4,9 +4,8 @@
  * @author Practical IT
  */
 import React, { Fragment, useState } from "react";
-
-import { BrowserRouter as Router, Switch, Route, Link, } from "react-router-dom";
-
+import { BrowserRouter as Router, Switch, Route, NavLink, Link } from "react-router-dom";
+import SeeMoreDetail from "./components/landing/SeeMoreDetail"
 import "./App.css";
 
 import AddMoreDetail from "./components/name/more-detail";
@@ -28,7 +27,6 @@ function App() {
 
   return (
     <Router>
-
       <Fragment>
         <nav className="navbar navbar-light bg-light static-top">
           <div className="container">
@@ -40,12 +38,16 @@ function App() {
             </a>
           </div>
         </nav>
-
         {routes.map(({ path, component }) => {
           return <Route path={path} exact component={component} />;
         })}
-
+        <div className="App">
+          <Switch>
+            <Route path="/SeeMoreDetail" component={SeeMoreDetail} />
+          </Switch>
+        </div>
         <footer className="footer bg-light">
+
           <div className="container">
             <div className="row">
               <div className="col-lg-6 h-100 text-center text-lg-left my-auto">
@@ -93,6 +95,8 @@ function App() {
             </div>
           </div>
         </footer>
+
+
       </Fragment>
     </Router>
   );

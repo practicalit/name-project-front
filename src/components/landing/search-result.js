@@ -2,9 +2,8 @@
  * @author Practical IT
  */
 import React, { Fragment } from "react";
-import { Link, NavLink, BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
 import SeeMoreDetail from "./SeeMoreDetail"
+import { Link, NavLink, Switch, BrowserRouter as Route } from "react-router-dom";
 
 const SearchResult = ({ searchResult }) => {
   searchResult =
@@ -12,24 +11,16 @@ const SearchResult = ({ searchResult }) => {
       ? searchResult[0]
       : null;
   console.log(searchResult);
-
   return (
-
-
     <Fragment>
-
+      <div className="App">
+        <NavLink exact activeClassName="active" to="/SeeMoreDetail"><h2>See More Detail</h2></NavLink>
+        <Switch>
+          <Route path="/SeeMoreDetail" component={SeeMoreDetail} />
+        </Switch>
+      </div>
       <section className="features-icons bg-light text-center">
-
         <div className="container">
-          <Router>
-            <div>
-              <NavLink exact activeClassName="active" to="/SeeMoreDetail"><h2>SeeMoreDetail</h2></NavLink>
-              <Switch>
-                <Route path="/SeeMoreDetail" component={SeeMoreDetail} />
-              </Switch>
-            </div>
-          </Router>
-
           <div className="row">
             <div className="col-lg-4">
               <div className="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
@@ -94,8 +85,6 @@ const SearchResult = ({ searchResult }) => {
         </div>
       </section>
     </Fragment>
-
   );
 };
-
 export default SearchResult;

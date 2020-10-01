@@ -4,6 +4,7 @@ import CreateName from '../../components/name/create-name';
 import Search from '../../components/landing/search';
 import SearchResult from '../../components/landing/search-result';
 
+
 const LandingParent = () => {
 
     const [searchResult, setSearchResult] = useState();
@@ -20,6 +21,7 @@ const LandingParent = () => {
 
     return (
         <Fragment>
+
             <header className="masthead text-white text-center">
                 <div className="overlay"></div>
                 <div className="container">

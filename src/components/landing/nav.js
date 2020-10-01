@@ -1,6 +1,7 @@
 import React from 'react';
 
-const Nav = () =>{
+
+const Nav = () => {
     return (
         <nav>
             <ul>

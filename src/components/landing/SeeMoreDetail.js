@@ -8,7 +8,7 @@ const SeeMoreDetail = () => {
     return (
         <div>
             <div className="App" style={styleContainer}>
-                <h1 style={styleH1}>See-more Detail</h1>
+                <h1 style={styleH}>See-more Detail</h1>
                 <br />
                 <div><h3>Meaning</h3><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, repudiandae sunt non, impedit quaerat nulla rem veritatis consequuntur voluptatibus provident at tempore fugiat quas, eveniet hic quis ipsum similique commodi?</p></div>
                 <hr />
@@ -30,13 +30,13 @@ const SeeMoreDetail = () => {
 export default SeeMoreDetail;
 
 const styleContainer = {
-    width: "75%",
-    background: "#EEEEEE",
+    width: "100%",
+    background: "#FAFAFA",
     borderline: "black",
     textAlign: "center",
-    margin: "40px 0px 20px 100px",
+
 }
-const styleH1 = {
+const styleH = {
     color: "white",
     background: "black"
 }

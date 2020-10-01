@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 
+
 const CreateName = (props) => {
   const [name, setName] = useState(props.propName);
   const [gender_id, setGender] = useState("");
@@ -116,6 +117,7 @@ const CreateName = (props) => {
               to={{ pathname: "/more-detail", state: { name: name } }}
             />
           ) : null}
+
         </form>
       </div>
     </Fragment>
