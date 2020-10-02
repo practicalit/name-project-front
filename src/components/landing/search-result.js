@@ -28,6 +28,7 @@ const SearchResult = ({ searchResult }) => {
                   <i className="icon-book-open m-auto text-primary"></i>
                 </div>
                 <h3>Meaning</h3>
+
                 <p className="lead mb-0">
                   {searchResult.definition != null &&
                     searchResult.definition != "" ? (
@@ -44,6 +45,15 @@ const SearchResult = ({ searchResult }) => {
                     )}
                 </p>
 
+                <Link
+                  className="float-center submit-button"
+                  to={{
+                    pathname: "/more-detail",
+                    state: { name: searchResult.name },
+                  }}
+                >
+                  Add more meaning
+                </Link>
               </div>
             </div>
             <div className="col-lg-4">
