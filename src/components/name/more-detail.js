@@ -158,14 +158,14 @@ const AddMoreDeatil = (props) => {
                     );
                   })}
                 </select>
-                <di>
+                <div>
                   <button
                     onClick={updateAgeRange}
                     className="btn btn-sm btn-primary mt-2"
                   >
                     Update
                   </button>
-                </di>
+                </div>
               </div>
             </div>
           </div>

@@ -3,7 +3,7 @@
  */
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import Addmoredetail from "./Addmoredetail";
+
 const SearchResult = ({ searchResult }) => {
   searchResult =
     searchResult != null && Array.isArray(searchResult)
@@ -73,9 +73,17 @@ const SearchResult = ({ searchResult }) => {
                 <p className="lead mb-0">
                   The origin of your name is {searchResult.origin}
                 </p>
+                <div>
+                <Link
+                      to={{
+                        pathname: "/more-detail",
+                        state: { name: searchResult.name },
+                      }}
+                    >
+                      <button className="btn btn-link">Add More Origin</button>
+                    </Link>
+                  </div>
               </div>
-
-              <Addmoredetail />
             </div>
           </div>
         </div>
