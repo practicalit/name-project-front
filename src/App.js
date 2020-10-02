@@ -5,7 +5,7 @@
  */
 import React, { Fragment, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, NavLink, Link } from "react-router-dom";
-import SeeMoreDetail from "./components/landing/SeeMoreDetail"
+import SeeMoreDetail from "./components/landing/see-more-detail"
 import "./App.css";
 
 import AddMoreDetail from "./components/name/more-detail";
@@ -38,8 +38,8 @@ function App() {
             </a>
           </div>
         </nav>
-        {routes.map(({ path, component }) => {
-          return <Route path={path} exact component={component} />;
+        {routes.map(({ path, component }, index) => {
+          return <Route key={index} path={path} exact component={component} />;
         })}
         <div className="App">
           <Switch>

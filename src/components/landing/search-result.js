@@ -2,7 +2,7 @@
  * @author Practical IT
  */
 import React, { Fragment } from "react";
-import SeeMoreDetail from "./SeeMoreDetail"
+import SeeMoreDetail from "./see-more-detail"
 import { Link, NavLink, Switch, BrowserRouter as Route } from "react-router-dom";
 
 const SearchResult = ({ searchResult }) => {
