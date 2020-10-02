@@ -5,7 +5,7 @@
  */
 import React, { Fragment, useState } from "react";
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
-import addVolunteer from "./components/landing/addVolunteer";
+import AddVolunteer from "./components/landing/add-volunteer";
 
 import "./App.css";
 
@@ -22,21 +22,22 @@ function App() {
       path: "/more-detail",
       component: AddMoreDetail,
     },
+    {
+      path: "/add-volunteer",
+      component: AddVolunteer
+    }
   ];
 
   return (
     <Router>
       <Fragment>
-        <Route path="/addVolunteer" component={addVolunteer} />
         <nav className="navbar navbar-light bg-light static-top">
           <div className="container">
             <Link className="navbar-brand" to="/">
               The Name (Heritage) Project.
             </Link>
-            <Link to="/addVolunteer">
-              <a className="btn btn-primary" href="#">
+            <Link to="/add-volunteer" className="btn btn-primary" href="#">
                 Become Volunteer
-              </a>
             </Link>
           </div>
         </nav>

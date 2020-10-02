@@ -1,6 +1,6 @@
 import React from "react";
 
-function App() {
+function AddVolunteer() {
   return (
     <div style={styleApp}>
       <form>
@@ -10,7 +10,7 @@ function App() {
           <div style={styleInput}>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="firstName"
               placeholder="First Name"
             />
@@ -18,7 +18,7 @@ function App() {
           <div style={styleInput}>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="lastName"
               placeholder="Last Name"
             />
@@ -26,7 +26,7 @@ function App() {
           <div style={styleInput}>
             <input
               type="email"
-              class="form-control"
+              className="form-control"
               id="email"
               placeholder="Email"
             />
@@ -36,37 +36,37 @@ function App() {
         <div style={{ margin: "0px 0px 15px" }}>
           I can volunteer an areas of
         </div>
-        <div class="form-check">
-          <div class="form-check form-check-inline">
+        <div className="form-check">
+          <div className="form-check form-check-inline">
             <input
-              class="form-check-input"
+              className="form-check-input"
               type="checkbox"
               id="inlineCheckbox1"
               value="option1"
             />
-            <label class="form-check-label" for="inlineCheckbox1">
+            <label className="form-check-label" htmlFor="inlineCheckbox1">
               Translation
             </label>
           </div>
-          <div class="form-check form-check-inline">
+          <div className="form-check form-check-inline">
             <input
-              class="form-check-input"
+              className="form-check-input"
               type="checkbox"
               id="inlineCheckbox1"
               value="option1"
             />
-            <label class="form-check-label" for="inlineCheckbox1">
+            <label className="form-check-label" htmlFor="inlineCheckbox1">
               Verification
             </label>
           </div>
-          <div class="form-check form-check-inline">
+          <div className="form-check form-check-inline">
             <input
-              class="form-check-input"
+              className="form-check-input"
               type="checkbox"
               id="inlineCheckbox1"
               value="option1"
             />
-            <label class="form-check-label" for="inlineCheckbox1">
+            <label className="form-check-label" htmlFor="inlineCheckbox1">
               Promotion
             </label>
           </div>
@@ -98,4 +98,4 @@ const styleApp = {
   alignItems: "center",
 };
 
-export default App;
+export default AddVolunteer;
