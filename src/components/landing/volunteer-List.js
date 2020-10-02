@@ -1,11 +1,11 @@
 import React from "react";
 
-function volunteerlist () 
+function VolunteerList () 
 {
     return (
       <React.Fragment>
      
-    <table class="table table-hover">
+    <table className="table table-hover">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -38,4 +38,4 @@ function volunteerlist ()
   </React.Fragment>
     )
 }
-export default volunteerlist;
+export default VolunteerList;

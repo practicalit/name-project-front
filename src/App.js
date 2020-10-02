@@ -5,7 +5,7 @@
  */
 import React, { Fragment, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import volunteerList from "./components/landing/volunteer-List";
+import VolunteerList from "./components/landing/volunteer-list";
 
 
 import "./App.css";
@@ -36,14 +36,12 @@ function App() {
             <a className="btn btn-primary" href="#">
               Become Volunteer     
             </a>
-            <Link to="/volunteer-List">
-            <a className="btn btn-primary" href="#">
+            <Link to="/volunteer-List" className="btn btn-primary" href="#">
               See Volunteers     
-            </a>
             </Link>
           </div>
         </nav>
-        <Route path="/volunteer-List" component={volunteerList} />
+        <Route path="/volunteer-List" component={VolunteerList} />
         {routes.map(({ path, component }) => {
           return <Route path={path} exact component={component} />;
         })}
