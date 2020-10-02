@@ -4,9 +4,11 @@
  * @author Practical IT
  */
 import React, { Fragment, useState } from "react";
+
 import { BrowserRouter as Router, Switch, Route, NavLink, Link } from "react-router-dom";
-import SeeMoreDetail from "./components/landing/see-more-detail"
+import SeeMoreDetail from "./components/landing/see-more-detail";
 import VolunteerList from "./components/landing/volunteer-list";
+import AddVolunteer from "./components/landing/add-volunteer";
 
 import "./App.css";
 
@@ -24,7 +26,10 @@ function App() {
       path: "/more-detail",
       component: AddMoreDetail,
     },
-
+    {
+      path: "/add-volunteer",
+      component: AddVolunteer
+    }
   ];
 
   return (
@@ -35,11 +40,11 @@ function App() {
             <Link className="navbar-brand" to="/">
               The Name (Heritage) Project.
             </Link>
-            <a className="btn btn-primary" href="#">
-              Become Volunteer     
-            </a>
             <Link to="/volunteer-List" className="btn btn-primary" href="#">
-              See Volunteers     
+              See Volunteers  
+            </Link>   
+            <Link to="/add-volunteer" className="btn btn-primary" href="#">
+                Become Volunteer
             </Link>
           </div>
         </nav>

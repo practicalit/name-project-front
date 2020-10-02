@@ -1,5 +1,6 @@
-import React from 'react';
+import React from "react";
 
+<<<<<<< HEAD
 
 const Nav = () => {
     return (
@@ -11,5 +12,19 @@ const Nav = () => {
         </nav>
     )
 }
+=======
+const Nav = () => {
+  return (
+    <nav>
+      <ul>
+        <link>
+          <li>Become Voluteer</li>
+        </link>
+        <li>See reports</li>
+      </ul>
+    </nav>
+  );
+};
+>>>>>>> dawit2
 
 export default Nav;
