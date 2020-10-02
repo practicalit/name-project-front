@@ -178,14 +178,14 @@ const AddMoreDetail = (props) => {
                   onChange={(e) => setName(e.target.value)}
                   className="form-control"
                 />
-                <di>
+                <div>
                   <button
                     onClick={updateName}
                     className="btn btn-sm btn-primary mt-2"
                   >
                     Update
                   </button>
-                </di>
+                </div>
               </div>
             </div>
           </div>
