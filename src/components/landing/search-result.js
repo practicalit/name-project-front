@@ -39,13 +39,12 @@ const SearchResult = ({ searchResult }) => {
                 </p>
 
                 <Link
-                  class="float-center submit-button"
+                  className="float-center submit-button"
                   to={{
-                    pathname: "../components/name/more-detail",
+                    pathname: "/more-detail",
                     state: { name: searchResult.name },
                   }}
                 >
-                  {" "}
                   Add more meaning
                 </Link>
               </div>
