@@ -6,6 +6,8 @@
 import React, { Fragment, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, NavLink, Link } from "react-router-dom";
 import SeeMoreDetail from "./components/landing/see-more-detail"
+import VolunteerList from "./components/landing/volunteer-list";
+
 import "./App.css";
 
 import AddMoreDetail from "./components/name/more-detail";
@@ -27,17 +29,21 @@ function App() {
 
   return (
     <Router>
-      <Fragment>
+      <Fragment>   
         <nav className="navbar navbar-light bg-light static-top">
           <div className="container">
             <Link className="navbar-brand" to="/">
               The Name (Heritage) Project.
             </Link>
             <a className="btn btn-primary" href="#">
-              Become Volunteer
+              Become Volunteer     
             </a>
+            <Link to="/volunteer-List" className="btn btn-primary" href="#">
+              See Volunteers     
+            </Link>
           </div>
         </nav>
+        <Route path="/volunteer-List" component={VolunteerList} />
         {routes.map(({ path, component }, index) => {
           return <Route key={index} path={path} exact component={component} />;
         })}
@@ -103,3 +109,4 @@ function App() {
 }
 
 export default App;
+
