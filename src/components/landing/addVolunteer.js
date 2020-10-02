@@ -2,7 +2,7 @@ import React from "react";
 
 function App() {
   return (
-    <div className="App">
+    <div style={styleApp}>
       <form>
         <h6>Thanks for your valued voulentering</h6>
         <div></div>
@@ -89,6 +89,13 @@ function App() {
 }
 const styleInput = {
   margin: "40px 0px 40px",
+};
+const styleApp = {
+  textAlign: "center",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
 };
 
 export default App;
