@@ -150,22 +150,22 @@ const AddMoreDetail = (props) => {
                   onChange={(e) => setSelectedRange(e.target.value)}
                 >
                   <option>Select Age Range.</option>
-                  {ageRange.map((range) => {
+                  {ageRange.map((range, index) => {
                     return (
-                      <option
+                      <option key={index}
                         value={range.range_id}
                       >{`${range.lower_range} - ${range.higher_range}`}</option>
                     );
                   })}
                 </select>
-                <di>
+                <div>
                   <button
                     onClick={updateAgeRange}
                     className="btn btn-sm btn-primary mt-2"
                   >
                     Update
                   </button>
-                </di>
+                </div>
               </div>
             </div>
           </div>
