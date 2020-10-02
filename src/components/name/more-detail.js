@@ -173,7 +173,7 @@ const AddMoreDeatil = (props) => {
                 <div className="features-icons-icon d-flex">
                   <i className="icon-list m-auto text-primary"></i>
                 </div>
-                <h3>What is the name that you would like to enter?</h3>
+                <h3>What similart name do you know like yours?</h3>
                 <input
                   onChange={(e) => setName(e.target.value)}
                   className="form-control"
