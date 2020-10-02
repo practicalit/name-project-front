@@ -12,6 +12,7 @@ const AddMoreDetail = (props) => {
   const [selectedRange, setSelectedRange] = useState();
   const [name, setName] = useState("");
   const [alias, setAlias] = useState("");
+  const [aliasInput, setAliasInput] = useState([1]);
 
   const updateName = () => {
     console.log(props);
@@ -77,6 +78,12 @@ const AddMoreDetail = (props) => {
     }
   };
 
+  const addAliasInput = () => {
+    let currentInput = [...aliasInput];
+    currentInput.push(currentInput.length + 1);
+    setAliasInput(currentInput);
+  }
+
   const updateMeaning = () => {
     try {
       const payload = { meaning: detail, name: name };
@@ -127,10 +134,16 @@ const AddMoreDetail = (props) => {
                   <i className="icon-tag m-auto text-primary"></i>
                 </div>
                 <h3>Alias for this Name</h3>
-                <input
-                  onChange={(e) => setAlias(e.target.value)}
-                  className="form-control"
-                />
+                {aliasInput.map( index => {
+                  return (
+                    <div className="p-1" key={index}><input
+                    onChange={(e) => setAlias(e.target.value)}
+                    className="form-control" placeholder="More Alias"
+                  />
+                  </div>
+                  )
+                })}
+                <div><button onClick={addAliasInput} className="btn btn-link">+ Alias</button></div>
                 <button
                   className="btn btn-sm btn-primary mt-2"
                   onClick={updateAlias}
