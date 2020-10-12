@@ -8,20 +8,21 @@ const AddVolunteer = (props) => {
   const [email, setEmail] = useState("");
 
   const [redirect, setRedirect] = useState(false);
+  
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
       const payload = { first_name, last_name, email };
+      console.log(payload);
       const response = await fetch(
-        `${process.env.REACT_APP_BACK_SERVER}volunteer`,
+        `${process.env.REACT_APP_BACK_SERVER}${process.env.REACT_APP_VOLUNTEER_API}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
         }
       );
-
       console.log(response);
       setRedirect(true);
     } catch (error) {
