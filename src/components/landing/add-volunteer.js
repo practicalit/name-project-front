@@ -1,6 +1,13 @@
 import React from "react";
 
 function AddVolunteer() {
+  const volunteerCategory = () => {
+    fetch(
+      `${process.env.REACT_APP_BACK_SERVER}${process.env.REACT_APP_VOLUNTEER_CATEGORY}`
+    )
+      .then((response) => console.log(response))
+      .catch((error) => console.error(error));
+  };
   return (
     <div style={styleApp}>
       <form>
@@ -43,6 +50,7 @@ function AddVolunteer() {
               type="checkbox"
               id="inlineCheckbox1"
               value="option1"
+              onClick={volunteerCategory}
             />
             <label className="form-check-label" htmlFor="inlineCheckbox1">
               Translation
@@ -54,6 +62,7 @@ function AddVolunteer() {
               type="checkbox"
               id="inlineCheckbox1"
               value="option1"
+              onClick={volunteerCategory}
             />
             <label className="form-check-label" htmlFor="inlineCheckbox1">
               Verification
@@ -65,6 +74,7 @@ function AddVolunteer() {
               type="checkbox"
               id="inlineCheckbox1"
               value="option1"
+              onClick={volunteerCategory}
             />
             <label className="form-check-label" htmlFor="inlineCheckbox1">
               Promotion
