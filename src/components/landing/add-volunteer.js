@@ -1,13 +1,22 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 function AddVolunteer() {
-  const volunteerCategory = () => {
-    fetch(
-      `${process.env.REACT_APP_BACK_SERVER}${process.env.REACT_APP_VOLUNTEER_CATEGORY}`
-    )
-      .then((response) => console.log(response))
-      .catch((error) => console.error(error));
+  const [categories, setCategories] = useState([]);
+
+  const volunteerCategory = async () => {
+    try {
+        const fetchedCategories = await fetch(`${process.env.REACT_APP_BACK_SERVER}${process.env.REACT_APP_VOLUNTEER_CATEGORY_API}`);
+        const jsonCategories = await fetchedCategories.json();
+        setCategories(jsonCategories);
+    } catch (error) {
+        console.error(error.message);
+    }
   };
+
+  useEffect( () => {
+    volunteerCategory();
+  }, []);
+
   return (
     <div style={styleApp}>
       <form>
@@ -44,42 +53,20 @@ function AddVolunteer() {
           I can volunteer an areas of
         </div>
         <div className="form-check">
-          <div className="form-check form-check-inline">
+          {categories.map( category => {
+            return (
+          <div key={category.volunteer_category_id} className="form-check form-check-inline">
             <input
               className="form-check-input"
               type="checkbox"
               id="inlineCheckbox1"
               value="option1"
-              onClick={volunteerCategory}
             />
             <label className="form-check-label" htmlFor="inlineCheckbox1">
-              Translation
+              {category.title}
             </label>
           </div>
-          <div className="form-check form-check-inline">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              id="inlineCheckbox1"
-              value="option1"
-              onClick={volunteerCategory}
-            />
-            <label className="form-check-label" htmlFor="inlineCheckbox1">
-              Verification
-            </label>
-          </div>
-          <div className="form-check form-check-inline">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              id="inlineCheckbox1"
-              value="option1"
-              onClick={volunteerCategory}
-            />
-            <label className="form-check-label" htmlFor="inlineCheckbox1">
-              Promotion
-            </label>
-          </div>
+          )})}
           <div className="form-group">
             <textarea
               className="col-12"
