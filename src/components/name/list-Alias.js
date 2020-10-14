@@ -19,6 +19,7 @@ useEffect(() => {
 
   return (
     <Fragment>
+        {/* list of Alias  */}
     <table className="table table-striped mt-5">
         <thead>
             <tr>
