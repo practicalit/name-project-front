@@ -6,6 +6,7 @@ const AddVolunteer = (props) => {
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
   const [redirect, setRedirect] = useState(false);
   
@@ -23,7 +24,10 @@ const AddVolunteer = (props) => {
           body: JSON.stringify(payload),
         }
       );
-      console.log(response);
+      const jsonResponse = await response.json();
+      if (jsonResponse) {
+        setMessage("Successfully Added Volunteer")
+      }
       setRedirect(true);
     } catch (error) {
       console.error(error.message);
@@ -112,6 +116,9 @@ const AddVolunteer = (props) => {
               rows="3"
               placeholder="Other, tell us.."
             ></textarea>
+            {message.length > 0 &&
+              <div className="alert alert-success">{message}</div>
+            }
             <div style={{ margin: "30px 0px 40px" }}>
               <button type="submit">Register Me</button>
             </div>
