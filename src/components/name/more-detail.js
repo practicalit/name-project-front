@@ -151,7 +151,8 @@ const AddMoreDetail = (props) => {
                 >
                   Update Alias
                 </button>
-               <ListAlias/>
+               {/* <ListAlias/> */}
+               <ListAlias name={props.location.state.name}/>
               </div>
             </div>
             <div className="col-lg-3">

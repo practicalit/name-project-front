@@ -1,10 +1,13 @@
 import React, { Fragment, useState, useEffect } from 'react';
-const ListAlias = () =>{
+// const ListAlias = () =>{
+const ListAlias = (props) => {   
   const [alias, setAlias] = useState([]);
+  const [name, setName] = useState("");
 
   const getAlias = async () => {
+    setName(props.name); //
     try {
-        const fetchedAlias= await fetch(`${process.env.REACT_APP_BACK_SERVER}${process.env.REACT_APP_ALIAS_API}`);
+        const fetchedAlias= await fetch(`${process.env.REACT_APP_BACK_SERVER}${process.env.REACT_APP_ALIAS_API}/${props.name}`);
         const jsonAlias = await fetchedAlias.json();
         setAlias(jsonAlias);
         console.log(jsonAlias);
@@ -41,7 +44,6 @@ useEffect(() => {
         </tbody>
     </table>
 </Fragment>
-  )
-}
-
+  );
+};
 export default ListAlias;
