@@ -12,7 +12,7 @@ const AddMoreDetail = (props) => {
   const [selectedRange, setSelectedRange] = useState();
   const [name, setName] = useState("");
   const [alias, setAlias] = useState("");
-  const [aliasInput, setAliasInput] = useState([{}]);
+  const [aliasInput, setAliasInput] = useState([1]);
 
   const updateName = () => {
     console.log(props);
@@ -41,19 +41,12 @@ const AddMoreDetail = (props) => {
   useEffect(() => {
     getLookups();
     updateName();
-    setAlias()
     return () => {
       //call on unmount
     };
   }, []);
 
-
-
-  const updateAlias = (e, index) => {
-    const { name, value } = e.target;
-    const list = [...aliasInput];
-    list[index][name] = value;
-    setAliasInput(list);
+  const updateAlias = () => {
     try {
       axios
         .post(
@@ -84,9 +77,13 @@ const AddMoreDetail = (props) => {
       console.error(error.message);
     }
   };
+
   const addAliasInput = () => {
-    setAliasInput([...aliasInput, { aliasName: "" }])
+    let currentInput = [...aliasInput];
+    currentInput.push(currentInput.length + 1);
+    setAliasInput(currentInput);
   }
+
   const updateMeaning = () => {
     try {
       const payload = { meaning: detail, name: name };
@@ -107,10 +104,6 @@ const AddMoreDetail = (props) => {
     }
   };
 
-  const handleSubmit = () => {
-    console.log(name, aliasInput)
-    setAliasInput(([{ name: "" }]), [{ aliasName: "" }]);
-  }
   return (
     <Fragment>
       <section className="features-icons bg-light text-center">
@@ -141,24 +134,22 @@ const AddMoreDetail = (props) => {
                   <i className="icon-tag m-auto text-primary"></i>
                 </div>
                 <h3>Alias for this Name</h3>
-                {aliasInput.map((item, i) => {
+                {aliasInput.map( index => {
                   return (
-                    <div key={i} className="p-1">
-                      <input type="text"
-                        value={item.aliasName}
-                        name="aliasName" className="form-control"
-                        onChange={(name) => updateAlias(name, i)} />
-
-                      {aliasInput.length - 1 === i && <button type="button"
-                        className="btn btn-sm btn-primary mt-2"
-                        value="+Add"
-                        onClick={addAliasInput} >+Add</button>}
-                    </div>
+                    <div className="p-1" key={index}><input
+                    onChange={(e) => setAlias(e.target.value)}
+                    className="form-control" placeholder="More Alias"
+                  />
+                  </div>
                   )
                 })}
-                <button type="button"
+                <div><button onClick={addAliasInput} className="btn btn-link">+ Alias</button></div>
+                <button
                   className="btn btn-sm btn-primary mt-2"
-                  onClick={handleSubmit}>Update alias</button>
+                  onClick={updateAlias}
+                >
+                  Update Alias
+                </button>
               </div>
             </div>
             <div className="col-lg-3">
