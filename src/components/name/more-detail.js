@@ -11,11 +11,13 @@ const AddMoreDetail = (props) => {
   const [ageRange, setAgeRange] = useState([]);
   const [selectedRange, setSelectedRange] = useState();
   const [name, setName] = useState("");
-  const [alias, setAlias] = useState("");
-  const [aliasInput, setAliasInput] = useState([{}]);
+  const [aliasInput, setAliasInput] = useState([
+    {
+      aliasName: '', id: 0
+    }
+]);
 
   const updateName = () => {
-    console.log(props);
     if (props.location != null && props.location.state != null) {
       setName(props.location.state.name);
     }
@@ -41,26 +43,45 @@ const AddMoreDetail = (props) => {
   useEffect(() => {
     getLookups();
     updateName();
-    setAlias()
     return () => {
       //call on unmount
     };
   }, []);
 
-
-
-  const updateAlias = (e, index) => {
-    const { name, value } = e.target;
-    const list = [...aliasInput];
-    list[index][name] = value;
+  /**
+   * To be called when new alias input box is added
+   */
+  const addInput = () => {
+    let list = [...aliasInput];
+    list.push({aliasName: "", id: list.length});
     setAliasInput(list);
+  }
+
+  /**
+   * Handles a new new alias update. To be called on onChange() event.
+   * @param {*} event 
+   * @param {*} index 
+   */
+  const updateAliasName = (event, index) => {
+    let names = [...aliasInput];
+    names.find( alias => alias.id === index ).aliasName = event.target.value;
+    setAliasInput(names);
+  }
+
+  /**
+   * Handle sending the collected aliases to the server.
+   * @param {*} e 
+   * @param {*} index 
+   */
+  const updateAlias = () => {
+    const list = [...aliasInput];
     try {
       axios
         .post(
           `${process.env.REACT_APP_BACK_SERVER}${process.env.REACT_APP_ALIAS_API}`,
           {
-            name,
-            alias,
+            name: name,
+            alias: list.map( alias => alias.aliasName)
           }
         )
         .then((result) => console.log(result));
@@ -84,14 +105,10 @@ const AddMoreDetail = (props) => {
       console.error(error.message);
     }
   };
-  const addAliasInput = () => {
-    setAliasInput([...aliasInput, { aliasName: "" }])
-  }
+
   const updateMeaning = () => {
     try {
       const payload = { meaning: detail, name: name };
-      console.log("before we send the data");
-      console.log(payload);
       fetch(
         `${process.env.REACT_APP_BACK_SERVER}${process.env.REACT_APP_MEANING_API}`,
         {
@@ -107,10 +124,6 @@ const AddMoreDetail = (props) => {
     }
   };
 
-  const handleSubmit = () => {
-    console.log(name, aliasInput)
-    setAliasInput(([{ name: "" }]), [{ aliasName: "" }]);
-  }
   return (
     <Fragment>
       <section className="features-icons bg-light text-center">
@@ -141,24 +154,24 @@ const AddMoreDetail = (props) => {
                   <i className="icon-tag m-auto text-primary"></i>
                 </div>
                 <h3>Alias for this Name</h3>
-                {aliasInput.map((item, i) => {
+                {aliasInput.map((item, index) => {
                   return (
-                    <div key={i} className="p-1">
+                    <div key={index} className="p-1">
                       <input type="text"
                         value={item.aliasName}
                         name="aliasName" className="form-control"
-                        onChange={(name) => updateAlias(name, i)} />
+                        onChange={(event) => updateAliasName(event, index)} />
 
-                      {aliasInput.length - 1 === i && <button type="button"
+                      {aliasInput.length - 1 === index && <button type="button"
                         className="btn btn-sm btn-primary mt-2"
                         value="+Add"
-                        onClick={addAliasInput} >+Add</button>}
+                        onClick={addInput} >+Add</button>}
                     </div>
                   )
                 })}
                 <button type="button"
                   className="btn btn-sm btn-primary mt-2"
-                  onClick={handleSubmit}>Update alias</button>
+                  onClick={updateAlias}>Update alias</button>
               </div>
             </div>
             <div className="col-lg-3">
