@@ -5,6 +5,7 @@
  */
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
+import ListAlias from './list-Alias';
 
 const AddMoreDetail = (props) => {
   const [detail, setDetail] = useState("");
@@ -158,7 +159,12 @@ const AddMoreDetail = (props) => {
                 })}
                 <button type="button"
                   className="btn btn-sm btn-primary mt-2"
-                  onClick={handleSubmit}>Update alias</button>
+                  onClick={updateAlias}
+                >
+                  Update Alias
+                </button>
+               {/* <ListAlias/> */}
+               <ListAlias name={props.location.state.name}/>
               </div>
             </div>
             <div className="col-lg-3">
