@@ -1,19 +1,20 @@
-import React, {useState, useEffect} from "react";
-
+import React, { useState, useEffect } from "react";
 function AddVolunteer() {
   const [categories, setCategories] = useState([]);
 
   const volunteerCategory = async () => {
     try {
-        const fetchedCategories = await fetch(`${process.env.REACT_APP_BACK_SERVER}${process.env.REACT_APP_VOLUNTEER_CATEGORY_API}`);
-        const jsonCategories = await fetchedCategories.json();
-        setCategories(jsonCategories);
+      const fetchedCategories = await fetch(
+        `${process.env.REACT_APP_BACK_SERVER}${process.env.REACT_APP_VOLUNTEER_CATEGORY_API}`
+      );
+      const jsonCategories = await fetchedCategories.json();
+      setCategories(jsonCategories);
     } catch (error) {
-        console.error(error.message);
+      console.error(error.message);
     }
   };
 
-  useEffect( () => {
+  useEffect(() => {
     volunteerCategory();
   }, []);
 
@@ -53,20 +54,32 @@ function AddVolunteer() {
           I can volunteer an areas of
         </div>
         <div className="form-check">
-          {categories.map( category => {
-            return (
-          <div key={category.volunteer_category_id} className="form-check form-check-inline">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              id="inlineCheckbox1"
-              value="option1"
-            />
-            <label className="form-check-label" htmlFor="inlineCheckbox1">
-              {category.title}
-            </label>
-          </div>
-          )})}
+          {categories
+            .sort(function (a, b) {
+              // ignore upper and lowercase
+              let titleA = a.title.toUpperCase(),
+                titleB = b.title.toUpperCase();
+
+              return titleA < titleB ? -1 : titleA > titleB ? 1 : 0;
+            })
+            .map((category) => {
+              return (
+                <div
+                  key={category.volunteer_category_id}
+                  className="form-check form-check-inline"
+                >
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox1"
+                    value="option1"
+                  />
+                  <label className="form-check-label" htmlFor="inlineCheckbox1">
+                    {category.title}
+                  </label>
+                </div>
+              );
+            })}
           <div className="form-group">
             <textarea
               className="col-12"
