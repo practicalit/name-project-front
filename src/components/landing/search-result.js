@@ -15,9 +15,6 @@ const SearchResult = ({ searchResult }) => {
     <Fragment>
       <div className="App">
         <NavLink exact activeClassName="active" to="/SeeMoreDetail"><h2>See More Detail</h2></NavLink>
-        <Switch>
-          <Route path="/SeeMoreDetail" component={SeeMoreDetail} />
-        </Switch>
       </div>
       <section className="features-icons bg-light text-center">
         <div className="container">

@@ -14,14 +14,10 @@ import "./App.css";
 
 import AddMoreDetail from "./components/name/more-detail";
 import LandingParent from "./components/landing/landing-parent";
+import MostSearchedNames from "./components/landing/most-searched-names";
 
 function App() {
   const routes = [
-    {
-      path: "/",
-      component: LandingParent,
-    },
-
     {
       path: "/more-detail",
       component: AddMoreDetail,
@@ -29,7 +25,19 @@ function App() {
     {
       path: "/add-volunteer",
       component: AddVolunteer
-    }
+    },
+    {
+      path: "/most-searched-names",
+      component: MostSearchedNames
+    },
+    {
+      path: "/volunteer-List",
+      component: VolunteerList
+    },
+    {
+      path: "/",
+      component: LandingParent,
+    },
   ];
 
   return (
@@ -48,10 +56,10 @@ function App() {
             </Link>
           </div>
         </nav>
-        <Route path="/volunteer-List" component={VolunteerList} />
         {routes.map(({ path, component }, index) => {
           return <Route key={index} path={path} exact component={component} />;
-        })}
+        })
+        }
         <div className="App">
           <Switch>
             <Route path="/SeeMoreDetail" component={SeeMoreDetail} />
