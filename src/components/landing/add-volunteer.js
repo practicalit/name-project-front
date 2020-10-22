@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 
 const AddVolunteer = (props) => {
@@ -9,6 +8,7 @@ const AddVolunteer = (props) => {
   const [message, setMessage] = useState("");
 
   const [redirect, setRedirect] = useState(false);
+  const [categories, setCategories] = useState([]);
   
 
   const onSubmitForm = async (e) => {
@@ -33,6 +33,23 @@ const AddVolunteer = (props) => {
       console.error(error.message);
     }
   };
+
+  const volunteerCategory = async () => {
+    try {
+      const fetchedCategories = await fetch(
+        `${process.env.REACT_APP_BACK_SERVER}${process.env.REACT_APP_VOLUNTEER_CATEGORY_API}`
+      );
+      const jsonCategories = await fetchedCategories.json();
+      setCategories(jsonCategories);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  useEffect(() => {
+    volunteerCategory();
+  }, []);
+
   return (
     <div style={styleApp}>
       <form onSubmit={onSubmitForm}>
@@ -75,39 +92,32 @@ const AddVolunteer = (props) => {
           I can volunteer an areas of
         </div>
         <div className="form-check">
-          <div className="form-check form-check-inline">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              id="inlineCheckbox1"
-              value="option1"
-            />
-            <label className="form-check-label" htmlFor="inlineCheckbox1">
-              Translation
-            </label>
-          </div>
-          <div className="form-check form-check-inline">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              id="inlineCheckbox1"
-              value="option1"
-            />
-            <label className="form-check-label" htmlFor="inlineCheckbox1">
-              Verification
-            </label>
-          </div>
-          <div className="form-check form-check-inline">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              id="inlineCheckbox1"
-              value="option1"
-            />
-            <label className="form-check-label" htmlFor="inlineCheckbox1">
-              Promotion
-            </label>
-          </div>
+          {categories
+            .sort(function (a, b) {
+              // ignore upper and lowercase
+              let titleA = a.title.toUpperCase(),
+                titleB = b.title.toUpperCase();
+
+              return titleA < titleB ? -1 : titleA > titleB ? 1 : 0;
+            })
+            .map((category) => {
+              return (
+                <div
+                  key={category.volunteer_category_id}
+                  className="form-check form-check-inline"
+                >
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox1"
+                    value="option1"
+                  />
+                  <label className="form-check-label" htmlFor="inlineCheckbox1">
+                    {category.title}
+                  </label>
+                </div>
+              );
+            })}
           <div className="form-group">
             <textarea
               className="col-12"
