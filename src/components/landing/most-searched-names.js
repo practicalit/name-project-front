@@ -1,6 +1,6 @@
 import React from "react";
 
-function MostSearchedNames () 
+function MostSearchedNames() 
 {
     return (
       <React.Fragment>

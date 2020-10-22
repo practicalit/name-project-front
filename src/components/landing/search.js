@@ -5,16 +5,10 @@
  */
 import React, { Fragment, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, NavLink, Link } from "react-router-dom";
-import MostSearchedNames from "./most-searched-names";
 
 const Search = (props) => {
   const [search, setSearch] = useState("");
-  const routes = [
-    {
-      path: "/most-searched-names",
-      component: MostSearchedNames,
-    },
-  ];
+
   const handleSearch = async (event) => {
     event.preventDefault();
     try {
@@ -28,7 +22,6 @@ const Search = (props) => {
     }
   };
   return (
-    <Router>
       <Fragment>
         <div className="row">
           <div className="col-xl-9 mx-auto">
@@ -68,12 +61,8 @@ const Search = (props) => {
             </div>
             </div>
           </div>
-        </div>
-        <div>
-            <Route path="/most-searched-names" component={MostSearchedNames} />
-        </div>     
+        </div>   
       </Fragment>
-    </Router>
   );
 };
 
