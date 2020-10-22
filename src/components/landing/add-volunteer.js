@@ -7,7 +7,14 @@ function AddVolunteer() {
     try {
         const fetchedCategories = await fetch(`${process.env.REACT_APP_BACK_SERVER}${process.env.REACT_APP_VOLUNTEER_CATEGORY_API}`);
         const jsonCategories = await fetchedCategories.json();
-        setCategories(jsonCategories);
+        setCategories(jsonCategories.sort( (cat1, cat2) => {
+           if (cat1.title > cat2.title) {
+              return 1;
+           } else if (cat1.title < cat2.title) {
+             return -1;
+           }
+           return 0;
+        }));
     } catch (error) {
         console.error(error.message);
     }
