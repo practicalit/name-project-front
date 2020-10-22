@@ -12,6 +12,8 @@ function VolunteerList() {
     };
   }, []);
 
+  const capitalize = string => string[0].toUpperCase() + string.slice(1).toLowerCase();
+
   const getVolunteers = () => {
     axios
       .get(
@@ -37,8 +39,8 @@ function VolunteerList() {
         <tbody>
           {volunteers.map( volunteer => {
             return (<tr>
-              <td>{volunteer.first_name}</td>
-              <td>{volunteer.last_name}</td>
+              <td>{capitalize(volunteer.first_name)}</td>
+              <td>{capitalize(volunteer.last_name)}</td>
               <td>{volunteer.email}</td>
             </tr>)
           })}   
