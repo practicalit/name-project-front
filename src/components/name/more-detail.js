@@ -5,7 +5,6 @@
  */
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
-import ListAlias from './list-Alias';
 
 const AddMoreDetail = (props) => {
   const [detail, setDetail] = useState("");
@@ -52,11 +51,11 @@ const AddMoreDetail = (props) => {
   /**
    * To be called when new alias input box is added
    */
-  const addInput = () => {
+  /*const addInput = () => {
     let list = [...aliasInput];
     list.push({aliasName: "", id: list.length});
     setAliasInput(list);
-  }
+  }*/
 
   /**
    * Handles a new new alias update. To be called on onChange() event.
@@ -155,29 +154,16 @@ const AddMoreDetail = (props) => {
                   <i className="icon-tag m-auto text-primary"></i>
                 </div>
                 <h3>Alias for this Name</h3>
-                {aliasInput.map((item, index) => {
-                  return (
-                    <div key={index} className="p-1">
-                      <input type="text"
-                        value={item.aliasName}
-                        name="aliasName" className="form-control"
-                        onChange={(event) => updateAliasName(event, index)} />
-
-                      {aliasInput.length - 1 === index && <button type="button"
-                        className="btn btn-sm btn-primary mt-2"
-                        value="+Add"
-                        onClick={addInput} >+Add</button>}
-                    </div>
-                  )
-                })}
+                <input
+                  onChange={(e) => setAliasInput(e.target.value)}
+                  className="form-control"
+                />
                 <button type="button"
                   className="btn btn-sm btn-primary mt-2"
                   onClick={updateAlias}
                 >
                   Update Alias
                 </button>
-               {/* <ListAlias/> */}
-               <ListAlias name={props.location.state.name}/>
               </div>
             </div>
             <div className="col-lg-3">
