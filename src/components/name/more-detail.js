@@ -6,7 +6,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
 import ListAlias from './list-Alias';
-
 const AddMoreDetail = (props) => {
   const [detail, setDetail] = useState("");
   const [ageRange, setAgeRange] = useState([]);
@@ -176,7 +175,7 @@ const AddMoreDetail = (props) => {
                 >
                   Update Alias
                 </button>
-               {/* <ListAlias/> */}
+                {/* <FormModal /> */}
                <ListAlias name={props.location.state.name}/>
               </div>
             </div>
