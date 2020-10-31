@@ -96,21 +96,20 @@ const CreateName = (props) => {
           </div>
           <div className="form-group">
             <label htmlFor="gender">Gender</label>
-            <select
+            <div
               onChange={(e) => setGender(e.target.value)}
-              className="form-control"
             >
               <option value="">Select applicable Gender</option>
               {allGenders.map((gender) => {
                 return (
-                  <option key={gender.gender_id} value={gender.gender_id}>
+                  <div key={gender.gender_id} value={gender.gender_id}>
+                    <input type="checkbox" value={gender.gender_id} />-
                     {gender.title}
-                  </option>
+                  </div>
                 );
               })}
-            </select>
+            </div>
           </div>
-
           <button className="btn btn-primary">Create</button>
           {redirect ? (
             <Redirect
