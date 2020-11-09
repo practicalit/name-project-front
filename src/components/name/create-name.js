@@ -99,15 +99,16 @@ const CreateName = (props) => {
             <div
               onChange={(e) => setGender(e.target.value)}
             >
-              <option value="">Select applicable Gender</option>
+              <div className="row w-50">
               {allGenders.map((gender) => {
                 return (
-                  <div key={gender.gender_id} value={gender.gender_id}>
-                    <input type="checkbox" value={gender.gender_id} />-
+                  <div className="col" key={gender.gender_id} value={gender.gender_id}>
+                    <input type="radio" name="gender" value={gender.gender_id} />
                     {gender.title}
                   </div>
                 );
               })}
+              </div>
             </div>
           </div>
           <button className="btn btn-primary">Create</button>
