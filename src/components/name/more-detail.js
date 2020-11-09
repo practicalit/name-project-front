@@ -5,6 +5,7 @@
  */
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
+import UpdateAlias from "./update-alias";
 
 const AddMoreDetail = (props) => {
   const [detail, setDetail] = useState("");
@@ -15,7 +16,7 @@ const AddMoreDetail = (props) => {
     {
       aliasName: '', id: 0
     }
-]);
+  ]);
 
   const updateName = () => {
     if (props.location != null && props.location.state != null) {
@@ -73,22 +74,6 @@ const AddMoreDetail = (props) => {
    * @param {*} e 
    * @param {*} index 
    */
-  const updateAlias = () => {
-    const list = [...aliasInput];
-    try {
-      axios
-        .post(
-          `${process.env.REACT_APP_BACK_SERVER}${process.env.REACT_APP_ALIAS_API}`,
-          {
-            name: name,
-            alias: list.map( alias => alias.aliasName)
-          }
-        )
-        .then((result) => console.log(result));
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
 
   const updateAgeRange = () => {
     try {
@@ -148,24 +133,9 @@ const AddMoreDetail = (props) => {
                 </button>
               </div>
             </div>
-            <div className="col-lg-3">
-              <div className="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                <div className="features-icons-icon d-flex">
-                  <i className="icon-tag m-auto text-primary"></i>
-                </div>
-                <h3>Alias for this Name</h3>
-                <input
-                  onChange={(e) => setAliasInput(e.target.value)}
-                  className="form-control"
-                />
-                <button type="button"
-                  className="btn btn-sm btn-primary mt-2"
-                  onClick={updateAlias}
-                >
-                  Update Alias
-                </button>
-              </div>
-            </div>
+           
+            <UpdateAlias propName={name} />
+          
             <div className="col-lg-3">
               <div className="features-icons-item mx-auto mb-0 mb-lg-3">
                 <div className="features-icons-icon d-flex">
