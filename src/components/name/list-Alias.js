@@ -26,7 +26,6 @@ useEffect(() => {
     <table className="table table-striped mt-5">
         <thead>
             <tr>
-                <th></th>
                 <th scope="col">Alias ID</th>
                 <th scope="col">Alias Name</th>
                

@@ -6,11 +6,13 @@
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
 import ListAlias from './list-Alias';
+
 const AddMoreDetail = (props) => {
   const [detail, setDetail] = useState("");
   const [ageRange, setAgeRange] = useState([]);
   const [selectedRange, setSelectedRange] = useState();
   const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
   const [aliasInput, setAliasInput] = useState([
     {
       aliasName: '', id: 0
@@ -62,6 +64,7 @@ const AddMoreDetail = (props) => {
    * @param {*} event 
    * @param {*} index 
    */
+ 
   const updateAliasName = (event, index) => {
     let names = [...aliasInput];
     names.find( alias => alias.id === index ).aliasName = event.target.value;
@@ -76,15 +79,23 @@ const AddMoreDetail = (props) => {
   const updateAlias = () => {
     const list = [...aliasInput];
     try {
-      axios
-        .post(
+  const responce =    axios
+        .post  (
           `${process.env.REACT_APP_BACK_SERVER}${process.env.REACT_APP_ALIAS_API}`,
           {
             name: name,
             alias: list.map( alias => alias.aliasName)
           }
         )
-        .then((result) => console.log(result));
+          .then((result) => console.log(result));       
+        setMessage("Sucessfully Alias Updated");
+        // .then((response) => {
+        //   // 
+        //  console.log(response)
+        // })
+         
+           
+         
     } catch (error) {
       console.error(error.message);
     }
@@ -175,8 +186,16 @@ const AddMoreDetail = (props) => {
                 >
                   Update Alias
                 </button>
-                {/* <FormModal /> */}
+               {/* <ListAlias/> */}
+               <div className="form-group">
+           
+            {message.length > 0 &&
+              <div className="alert alert-success">{message}</div>
+            }
+           
+          </div>
                <ListAlias name={props.location.state.name}/>
+
               </div>
             </div>
             <div className="col-lg-3">
