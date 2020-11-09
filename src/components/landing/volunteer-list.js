@@ -14,10 +14,10 @@ function VolunteerList() {
 
   const capitalize = string => {
     if(string!==null && string!=="" ){
-    return string[0].toUpperCase() + string.slice(1).toLowerCase();}
-  else{
- return ""
-  }}
+      return string[0].toUpperCase() + string.slice(1).toLowerCase();
+    }
+    return "";
+  }
 
   const getVolunteers = () => {
     axios
