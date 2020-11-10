@@ -96,21 +96,21 @@ const CreateName = (props) => {
           </div>
           <div className="form-group">
             <label htmlFor="gender">Gender</label>
-            <select
+            <div
               onChange={(e) => setGender(e.target.value)}
-              className="form-control"
             >
-              <option value="">Select applicable Gender</option>
+              <div className="row w-50">
               {allGenders.map((gender) => {
                 return (
-                  <option key={gender.gender_id} value={gender.gender_id}>
+                  <div className="col" key={gender.gender_id} value={gender.gender_id}>
+                    <input type="radio" name="gender" value={gender.gender_id} />
                     {gender.title}
-                  </option>
+                  </div>
                 );
               })}
-            </select>
+              </div>
+            </div>
           </div>
-
           <button className="btn btn-primary">Create</button>
           {redirect ? (
             <Redirect
