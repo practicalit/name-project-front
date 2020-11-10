@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.20.0",
     "node-modules": "^1.0.1",
@@ -36,6 +35,9 @@
     ]
   },
   "devDependencies": {
-    "dotenv": "^8.2.0"
+    "@testing-library/react": "^9.5.0",
+    "dotenv": "^8.2.0",
+    "jest-dom": "^4.0.0",
+    "react-test-renderer": "^17.0.1"
   }
 }
