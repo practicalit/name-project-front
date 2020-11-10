@@ -5,20 +5,13 @@
  */
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
-import ListAlias from "./list-Alias";
+import UpdateAlias from "./update-alias";
 
 const AddMoreDetail = (props) => {
   const [detail, setDetail] = useState("");
   const [ageRange, setAgeRange] = useState([]);
   const [selectedRange, setSelectedRange] = useState();
   const [name, setName] = useState("");
-  const [message, setMessage] = useState("");
-  const [aliasInput, setAliasInput] = useState([
-    {
-      aliasName: "",
-      id: 0,
-    },
-  ]);
 
   const updateName = () => {
     if (props.location != null && props.location.state != null) {
@@ -50,56 +43,6 @@ const AddMoreDetail = (props) => {
       //call on unmount
     };
   }, []);
-
-  /**
-   * To be called when new alias input box is added
-   */
-  const addInput = () => {
-    let list = [...aliasInput];
-    list.push({ aliasName: "", id: list.length });
-    setAliasInput(list);
-  };
-
-  /**
-   * Handles a new new alias update. To be called on onChange() event.
-   * @param {*} event
-   * @param {*} index
-   */
-
-  const updateAliasName = (event, index) => {
-    let names = [...aliasInput];
-    names.find((alias) => alias.id === index).aliasName = event.target.value;
-    setAliasInput(names);
-  };
-
-  /**
-   * Handle sending the collected aliases to the server.
-   * @param {*} e
-   * @param {*} index
-   */
-  const updateAlias = () => {
-    const list = [...aliasInput];
-    try {
-      axios
-        .post(
-          `${process.env.REACT_APP_BACK_SERVER}${process.env.REACT_APP_ALIAS_API}`,
-          {
-            name: name,
-            alias: list.map((alias) => alias.aliasName),
-          }
-        )
-      .then((response) => {
-        //make sure it is successfully added
-        let message = "Let's try again.";
-        if (response && response.data && response.data.length > 0) {
-          message = "Alias Updated";
-        }
-        setMessage(message);
-      })
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
 
   const updateAgeRange = () => {
     try {
@@ -159,52 +102,7 @@ const AddMoreDetail = (props) => {
                 </button>
               </div>
             </div>
-            <div className="col-lg-3">
-              <div className="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                <div className="features-icons-icon d-flex">
-                  <i className="icon-tag m-auto text-primary"></i>
-                </div>
-                <h3>Alias for this Name</h3>
-                {aliasInput.map((item, index) => {
-                  return (
-                    <div key={index} className="p-1">
-                      <input
-                        type="text"
-                        value={item.aliasName}
-                        name="aliasName"
-                        className="form-control"
-                        onChange={(event) => updateAliasName(event, index)}
-                      />
-
-                      {aliasInput.length - 1 === index && (
-                        <button
-                          type="button"
-                          className="btn btn-sm btn-primary mt-2"
-                          value="+Add"
-                          onClick={addInput}
-                        >
-                          +Add
-                        </button>
-                      )}
-                    </div>
-                  );
-                })}
-                <button
-                  type="button"
-                  className="btn btn-sm btn-primary mt-2"
-                  onClick={updateAlias}
-                >
-                  Update Alias
-                </button>
-                {/* <ListAlias/> */}
-                <div className="form-group">
-                  {message.length > 0 && (
-                    <div className="alert alert-success">{message}</div>
-                  )}
-                </div>
-                <ListAlias name={props.location.state.name} />
-              </div>
-            </div>
+            <UpdateAlias name={props.location.state.name}/>
             <div className="col-lg-3">
               <div className="features-icons-item mx-auto mb-0 mb-lg-3">
                 <div className="features-icons-icon d-flex">
