@@ -5,18 +5,20 @@
  */
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
-import ListAlias from './list-Alias';
+import ListAlias from "./list-Alias";
 
 const AddMoreDetail = (props) => {
   const [detail, setDetail] = useState("");
   const [ageRange, setAgeRange] = useState([]);
   const [selectedRange, setSelectedRange] = useState();
   const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
   const [aliasInput, setAliasInput] = useState([
     {
-      aliasName: '', id: 0
-    }
-]);
+      aliasName: "",
+      id: 0,
+    },
+  ]);
 
   const updateName = () => {
     if (props.location != null && props.location.state != null) {
@@ -54,25 +56,26 @@ const AddMoreDetail = (props) => {
    */
   const addInput = () => {
     let list = [...aliasInput];
-    list.push({aliasName: "", id: list.length});
+    list.push({ aliasName: "", id: list.length });
     setAliasInput(list);
-  }
+  };
 
   /**
    * Handles a new new alias update. To be called on onChange() event.
-   * @param {*} event 
-   * @param {*} index 
+   * @param {*} event
+   * @param {*} index
    */
+
   const updateAliasName = (event, index) => {
     let names = [...aliasInput];
-    names.find( alias => alias.id === index ).aliasName = event.target.value;
+    names.find((alias) => alias.id === index).aliasName = event.target.value;
     setAliasInput(names);
-  }
+  };
 
   /**
    * Handle sending the collected aliases to the server.
-   * @param {*} e 
-   * @param {*} index 
+   * @param {*} e
+   * @param {*} index
    */
   const updateAlias = () => {
     const list = [...aliasInput];
@@ -82,10 +85,17 @@ const AddMoreDetail = (props) => {
           `${process.env.REACT_APP_BACK_SERVER}${process.env.REACT_APP_ALIAS_API}`,
           {
             name: name,
-            alias: list.map( alias => alias.aliasName)
+            alias: list.map((alias) => alias.aliasName),
           }
         )
-        .then((result) => console.log(result));
+      .then((response) => {
+        //make sure it is successfully added
+        let message = "Let's try again.";
+        if (response && response.data && response.data.length > 0) {
+          message = "Alias Updated";
+        }
+        setMessage(message);
+      })
     } catch (error) {
       console.error(error.message);
     }
@@ -158,26 +168,41 @@ const AddMoreDetail = (props) => {
                 {aliasInput.map((item, index) => {
                   return (
                     <div key={index} className="p-1">
-                      <input type="text"
+                      <input
+                        type="text"
                         value={item.aliasName}
-                        name="aliasName" className="form-control"
-                        onChange={(event) => updateAliasName(event, index)} />
+                        name="aliasName"
+                        className="form-control"
+                        onChange={(event) => updateAliasName(event, index)}
+                      />
 
-                      {aliasInput.length - 1 === index && <button type="button"
-                        className="btn btn-sm btn-primary mt-2"
-                        value="+Add"
-                        onClick={addInput} >+Add</button>}
+                      {aliasInput.length - 1 === index && (
+                        <button
+                          type="button"
+                          className="btn btn-sm btn-primary mt-2"
+                          value="+Add"
+                          onClick={addInput}
+                        >
+                          +Add
+                        </button>
+                      )}
                     </div>
-                  )
+                  );
                 })}
-                <button type="button"
+                <button
+                  type="button"
                   className="btn btn-sm btn-primary mt-2"
                   onClick={updateAlias}
                 >
                   Update Alias
                 </button>
-               {/* <ListAlias/> */}
-               <ListAlias name={props.location.state.name}/>
+                {/* <ListAlias/> */}
+                <div className="form-group">
+                  {message.length > 0 && (
+                    <div className="alert alert-success">{message}</div>
+                  )}
+                </div>
+                <ListAlias name={props.location.state.name} />
               </div>
             </div>
             <div className="col-lg-3">
@@ -193,7 +218,8 @@ const AddMoreDetail = (props) => {
                   <option>Select Age Range.</option>
                   {ageRange.map((range, index) => {
                     return (
-                      <option key={index}
+                      <option
+                        key={index}
                         value={range.range_id}
                       >{`${range.lower_range} - ${range.higher_range}`}</option>
                     );
@@ -237,5 +263,3 @@ const AddMoreDetail = (props) => {
 };
 
 export default AddMoreDetail;
-
-

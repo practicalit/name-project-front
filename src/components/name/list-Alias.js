@@ -10,7 +10,6 @@ const ListAlias = (props) => {
         const fetchedAlias= await fetch(`${process.env.REACT_APP_BACK_SERVER}${process.env.REACT_APP_ALIAS_API}/${props.name}`);
         const jsonAlias = await fetchedAlias.json();
         setAlias(jsonAlias);
-        console.log(jsonAlias);
     } catch (error) {
         console.error(error.message);
     }
@@ -26,7 +25,6 @@ useEffect(() => {
     <table className="table table-striped mt-5">
         <thead>
             <tr>
-                <th></th>
                 <th scope="col">Alias ID</th>
                 <th scope="col">Alias Name</th>
                
