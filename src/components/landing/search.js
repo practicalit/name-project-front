@@ -54,8 +54,8 @@ const Search = (props) => {
               </div>
             </form>
             <div className="my-4">
-            <div class="text-left">
-                <Link to="/most-searched-names" class="text-white" href="#">
+            <div className="text-left">
+                <Link to="/most-searched-names" className="text-white" href="#">
                   Most Searched Names
                 </Link>
             </div>

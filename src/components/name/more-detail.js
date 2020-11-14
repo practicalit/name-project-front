@@ -12,11 +12,6 @@ const AddMoreDetail = (props) => {
   const [ageRange, setAgeRange] = useState([]);
   const [selectedRange, setSelectedRange] = useState();
   const [name, setName] = useState("");
-  const [aliasInput, setAliasInput] = useState([
-    {
-      aliasName: '', id: 0
-    }
-  ]);
 
   const updateName = () => {
     if (props.location != null && props.location.state != null) {
@@ -48,32 +43,6 @@ const AddMoreDetail = (props) => {
       //call on unmount
     };
   }, []);
-
-  /**
-   * To be called when new alias input box is added
-   */
-  /*const addInput = () => {
-    let list = [...aliasInput];
-    list.push({aliasName: "", id: list.length});
-    setAliasInput(list);
-  }*/
-
-  /**
-   * Handles a new new alias update. To be called on onChange() event.
-   * @param {*} event 
-   * @param {*} index 
-   */
-  const updateAliasName = (event, index) => {
-    let names = [...aliasInput];
-    names.find( alias => alias.id === index ).aliasName = event.target.value;
-    setAliasInput(names);
-  }
-
-  /**
-   * Handle sending the collected aliases to the server.
-   * @param {*} e 
-   * @param {*} index 
-   */
 
   const updateAgeRange = () => {
     try {
@@ -133,9 +102,7 @@ const AddMoreDetail = (props) => {
                 </button>
               </div>
             </div>
-           
-            <UpdateAlias propName={name} />
-          
+            <UpdateAlias name={props.location.state.name}/>
             <div className="col-lg-3">
               <div className="features-icons-item mx-auto mb-0 mb-lg-3">
                 <div className="features-icons-icon d-flex">
@@ -149,7 +116,8 @@ const AddMoreDetail = (props) => {
                   <option>Select Age Range.</option>
                   {ageRange.map((range, index) => {
                     return (
-                      <option key={index}
+                      <option
+                        key={index}
                         value={range.range_id}
                       >{`${range.lower_range} - ${range.higher_range}`}</option>
                     );
@@ -193,5 +161,3 @@ const AddMoreDetail = (props) => {
 };
 
 export default AddMoreDetail;
-
-
