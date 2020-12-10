@@ -5,10 +5,17 @@ import App from './App';
 
 import './assets/css/all.min.css';
 import './assets/css/landing.css';
+import {Provider} from 'react-redux'
+import store from './redux/store'
+import userContainer from './redux/userContainer';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+      <userContainer/>
+  </Provider>
+   
   </React.StrictMode>,
   document.getElementById('root')
 );
